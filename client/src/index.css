@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .nav-list li {
+    padding: 0 0.5em 0.25em;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+  }
+  .nav-list li:before {
+    content: "";
+    position: absolute;
+    inset: calc(100% - 3px) 0 0 0;
+    background: #000;
+    scale: 0 1;
+    transition: 0.3s, translate 0s 0.3s;
+  }
+  
+  .nav-list:hover li:before {
+    scale: 1;
+  }
+  
+  .nav-list li:hover:before {
+    translate: 0;
+    transition: 0.3s;
+  }
+  
+  .nav-list:hover li:has(~ li:hover):before {
+    translate: 100% 0;
+    transition: 0.2s 0.2s, scale 0s 0.4s;
+  }
+  
+  .nav-list:hover li:hover ~ li:before {
+    translate: -100% 0;
+    transition: 0.2s 0.2s, scale 0s 0.4s;
+  }

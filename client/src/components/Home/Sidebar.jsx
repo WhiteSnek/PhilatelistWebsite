@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Sidebar = () => {
   const channels = [
@@ -10,19 +11,28 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="fixed top-[5rem] left-2 w-80 bg-white shadow-lg rounded-r-lg p-6 border border-gray-200 z-50 overflow-scroll" style={{ height: "calc(100vh - 5.5rem)" }} >
-      <h2 className="text-xl font-semibold mb-6 text-gray-800">Channels</h2>
+    <div
+      className="fixed top-[5rem] left-2 w-80  shadow-lg rounded-lg p-6 border-2 border-gray-700 z-50 overflow-y-scroll"
+      style={{ height: 'calc(100vh - 5.5rem)' }}
+    >
+      <h2 className="text-xl font-semibold mb-6 ">Channels</h2>
       <ul>
         {channels.map((channel) => (
-          <li key={channel.id} className="mb-4">
+          <motion.li
+            key={channel.id}
+            className="mb-4"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+          >
             <Link
               to={`/channel/${channel.id}`}
-              className="block w-full bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-200 ease-in-out shadow-md transform hover:scale-105"
+              className="block w-full bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition duration-200 ease-in-out shadow-md transform hover:scale-105"
               aria-label={`Go to ${channel.name}`}
             >
               {channel.name}
             </Link>
-          </li>
+          </motion.li>
         ))}
       </ul>
     </div>

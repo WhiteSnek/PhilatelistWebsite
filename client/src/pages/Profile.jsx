@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaEdit } from 'react-icons/fa'; // Importing edit icon
+import { motion } from 'framer-motion';
 
 const Profile = () => {
   const user = {
@@ -13,28 +14,79 @@ const Profile = () => {
       totalValue: '$1,500',
     },
     posts: [
-      { id: 1, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH5VlvN_msBC0_LJNGRJF344rQOBhzkvhOxw&s', caption: 'Rare stamp from 1965', price: '$200' },
-      { id: 2, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShebnrysg_NXoYPcs5CqbqRWvw0r0sutRw-A&s', caption: 'Limited edition stamp', price: '$350' },
-      { id: 3, image: 'https://d2pn8kiwq2w21t.cloudfront.net/images/1-_Pillars-of-Creation.width-1024.jpg', caption: 'Vintage stamp collection', price: '$500' },
-    ],
+      {
+        id: 1,
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH5VlvN_msBC0_LJNGRJF344rQOBhzkvhOxw&s',
+        caption: 'Rare stamp from 1965',
+        price: '$200',
+      },
+      {
+        id: 2,
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShebnrysg_NXoYPcs5CqbqRWvw0r0sutRw-A&s',
+        caption: 'Limited edition stamp',
+        price: '$350',
+      },
+      {
+        id: 3,
+        image: 'https://d2pn8kiwq2w21t.cloudfront.net/images/1-_Pillars-of-Creation.width-1024.jpg',
+        caption: 'Vintage stamp collection',
+        price: '$500',
+      },
+      {
+        id: 4,
+        image: 'https://media.dharaastamps.co.in/wp-content/uploads/2022/05/MINT0002.jpg',
+        caption: 'Stamp from the 1800s',
+        price: '$250',
+      },
+      {
+        id: 5,
+        image: 'https://assets.architecturaldigest.in/photos/6008354b3a9d9570bc841a61/master/w_1600%2Cc_limit/char_D4B4397.jpg',
+        caption: 'Rare commemorative stamp',
+        price: '$400',
+      },
+      {
+        id: 6,
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsJNkluLwLr58g2-5Zvvxbk37MBcqQfXlEeg&s',
+        caption: 'Vintage rare stamp',
+        price: '$450',
+      },
+      {
+        id: 7,
+        image: 'https://5.imimg.com/data5/SELLER/Default/2021/5/KA/YK/XE/128841748/old-postage-stamps.jpg',
+        caption: 'Special edition stamp',
+        price: '$275',
+      },
+      {
+        id: 8,
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQumnJtByR9x33UZfLKTnH_okbT5s1gVuzQqQ&s',
+        caption: 'Unique stamp from 1920s',
+        price: '$300',
+      },
+    ]
+    
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
+    <div className="min-h-screen bg-gray-100 p-6">
       {/* User Details and Collection Information */}
-      <div className="bg-white p-6 rounded-lg shadow-md mb-6">
+      <motion.div
+        className="bg-white p-6 rounded-lg border-2 border-black mb-8 shadow-md"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="flex flex-wrap md:flex-nowrap items-center">
           {/* User Details */}
           <div className="flex items-center mb-6 md:mb-0">
             <img
               src={user.profilePicture}
               alt="Profile"
-              className="w-24 h-24 rounded-full object-cover border-4 border-red-500"
+              className="w-24 h-24 rounded-full object-cover border-4 border-black shadow-lg "
             />
             <div className="ml-4">
               <h1 className="text-3xl font-bold text-gray-900">{user.name}</h1>
               <p className="text-gray-600">{user.email}</p>
-              <Link to="/edit-profile" className="text-red-500 hover:underline mt-2 inline-flex items-center">
+              <Link to="/edit-profile" className="font-bold hover:underline mt-2 inline-flex items-center">
                 <FaEdit className="mr-1" /> Edit Profile
               </Link>
             </div>
@@ -42,9 +94,9 @@ const Profile = () => {
 
           {/* Collection Information */}
           <div className="flex-1 md:ml-8">
-            <div className="flex justify-between w-2/3 ml-auto items-center mb-4">
+            <div className="flex relative justify-center items-center mb-4">
               <h2 className="text-2xl font-bold text-gray-900">My Collection</h2>
-              <Link to="/edit-collection" className="text-red-500 hover:underline inline-flex items-center">
+              <Link to="/edit-collection" className="absolute top-0 right-0 font-bold hover:underline inline-flex items-center">
                 <FaEdit className="mr-1" /> Edit Collection
               </Link>
             </div>
@@ -64,23 +116,33 @@ const Profile = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Collection Feed */}
-      <div className="bg-white p-6 rounded-lg shadow-md">
+      <motion.div
+        className="bg-white p-6 rounded-lg shadow-lg border-2 border-black"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <h2 className="text-2xl font-bold mb-4">Collection Feed</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {user.posts.map(post => (
-            <div key={post.id} className="border rounded-lg overflow-hidden">
+            <motion.div
+              key={post.id}
+              className="border rounded-lg overflow-hidden bg-gray-50"
+              whileHover={{ scale: 1.01 }}
+              transition={{ type: 'spring', stiffness: 300 }}
+            >
               <img src={post.image} alt={post.caption} className="w-full h-48 object-cover" />
               <div className="p-4">
                 <p className="text-gray-800 font-semibold">{post.caption}</p>
                 <p className="text-gray-600 mt-2">{post.price}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Sidebar from "../components/Home/Sidebar";
 import MembersList from "../components/Members/MembersList";
+import { motion } from "framer-motion";
+import SendIcon from '@mui/icons-material/Send';
 
 const Channel = () => {
   const [messages, setMessages] = useState([
@@ -32,17 +34,13 @@ const Channel = () => {
   ];
 
   return (
-    <div className="flex bg-gray-100 p-4">
-      {/* Sidebar */}
+    <div className="flex bg-gray-100 p-2.5">
       <Sidebar />
-
-      {/* Main Chat Area */}
-      <div className="flex-1 flex flex-col mx-auto max-w-4xl px-4">
-        {" "}
-        {/* Adjusted margin-left for the fixed sidebar */}
+      <div className="flex-1 flex flex-col gap-2 mx-auto max-w-4xl px-4 ">
+        {/* Chat Area */}
         <div
-          className="bg-white border border-gray-300 rounded-lg shadow-md overflow-auto p-4"
-          style={{ height: "calc(100vh - 11rem)" }}
+          className="bg-white rounded-lg shadow-md overflow-auto p-4 border-black border-2"
+          style={{ height: "calc(100vh - 11.5rem)" }}
         >
           {/* Chat Messages */}
           {messages.map((message) => (
@@ -53,19 +51,25 @@ const Channel = () => {
           ))}
         </div>
         {/* Message Input */}
-        <form onSubmit={handleSendMessage} className="bg-white border-t border-gray-300 p-4 flex items-center rounded-md">
+        <form onSubmit={handleSendMessage} className="bg-white border-black border-2 p-4 flex items-center rounded-md">
           <input
             type="text"
             value={newMessage}
             onChange={handleMessageChange}
             placeholder="Type a message..."
-            className="flex-1 p-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+            className="flex-1 p-2 border border-gray-300 rounded-l-lg focus:outline-none"
           />
           <button
             type="submit"
-            className="bg-red-500 text-white px-4 py-2 rounded-r-lg hover:bg-red-600 transition"
+            className="bg-black text-white px-4 py-2 rounded-r-lg hover:bg-gray-800"
           >
-            Send
+            <motion.div
+              whileHover={{ x: 5 }}  // Translate the icon 5px to the right on hover
+              whileTap={{ x: 2 }}    // Slightly translate the icon 2px to the right when clicked
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}  // Smooth transition effect
+            >
+              <SendIcon />
+            </motion.div>
           </button>
         </form>
       </div>
