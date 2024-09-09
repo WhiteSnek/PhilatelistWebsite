@@ -128,7 +128,7 @@ const PostCard = ({ post }) => {
         <motion.img
           src={post.postImage}
           alt="Philatelic Item"
-          className={`w-full rounded-lg mb-4 cursor-pointer transition-all duration-300 ${showBackstory ? 'opacity-50' : 'opacity-100'}`}
+          className={`w-full h-96 object-cover rounded-lg mb-4 cursor-pointer transition-all duration-300 ${showBackstory ? 'opacity-50' : 'opacity-100'}`}
           whileHover={{ scale: 1.01 }}
           transition={{ duration: 0.3 }}
         />
