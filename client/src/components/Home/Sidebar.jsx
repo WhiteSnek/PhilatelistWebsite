@@ -12,7 +12,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className="fixed top-[5rem] left-2 w-80  shadow-lg rounded-lg p-6 border-2 border-gray-700 z-50 overflow-y-scroll"
+      className="fixed top-[5rem] left-2 w-80  shadow-lg rounded-lg p-6 border-2 border-gray-700 bg-white z-50 overflow-y-scroll"
       style={{ height: 'calc(100vh - 5.5rem)' }}
     >
       <h2 className="text-xl font-semibold mb-6 ">Channels</h2>

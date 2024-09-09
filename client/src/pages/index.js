@@ -5,6 +5,7 @@ import Profile from "./Profile";
 import Channel from "./Channel";
 import Order from "./Order";
 import BuyItems from "./BuyItems";
+import Events from "./Events";
 
 export {
     Home,
@@ -13,5 +14,6 @@ export {
     Profile,
     Channel,
     Order,
-    BuyItems
+    BuyItems,
+    Events
 }

@@ -43,3 +43,24 @@
     translate: -100% 0;
     transition: 0.2s 0.2s, scale 0s 0.4s;
   }
+
+
+  .custom-checkbox {
+    @apply appearance-none w-6 h-6 border-2 border-black rounded-sm cursor-pointer relative;
+  }
+  
+  .custom-checkbox:checked {
+    @apply bg-black;
+  }
+  
+  .custom-checkbox:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border-radius: 2px;
+    transform: translate(-50%, -50%);
+  }
