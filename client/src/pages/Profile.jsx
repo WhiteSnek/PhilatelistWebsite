@@ -11,56 +11,56 @@ const Profile = () => {
     collectionInfo: {
       totalStamps: 120,
       rareStamps: 15,
-      totalValue: '$1,500',
+      totalValue: '₹1,500',
     },
     posts: [
       {
         id: 1,
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH5VlvN_msBC0_LJNGRJF344rQOBhzkvhOxw&s',
         caption: 'Rare stamp from 1965',
-        price: '$200',
+        price: '₹200',
       },
       {
         id: 2,
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShebnrysg_NXoYPcs5CqbqRWvw0r0sutRw-A&s',
         caption: 'Limited edition stamp',
-        price: '$350',
+        price: '₹350',
       },
       {
         id: 3,
         image: 'https://d2pn8kiwq2w21t.cloudfront.net/images/1-_Pillars-of-Creation.width-1024.jpg',
         caption: 'Vintage stamp collection',
-        price: '$500',
+        price: '₹500',
       },
       {
         id: 4,
         image: 'https://media.dharaastamps.co.in/wp-content/uploads/2022/05/MINT0002.jpg',
         caption: 'Stamp from the 1800s',
-        price: '$250',
+        price: '₹250',
       },
       {
         id: 5,
         image: 'https://assets.architecturaldigest.in/photos/6008354b3a9d9570bc841a61/master/w_1600%2Cc_limit/char_D4B4397.jpg',
         caption: 'Rare commemorative stamp',
-        price: '$400',
+        price: '₹400',
       },
       {
         id: 6,
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsJNkluLwLr58g2-5Zvvxbk37MBcqQfXlEeg&s',
         caption: 'Vintage rare stamp',
-        price: '$450',
+        price: '₹450',
       },
       {
         id: 7,
         image: 'https://5.imimg.com/data5/SELLER/Default/2021/5/KA/YK/XE/128841748/old-postage-stamps.jpg',
         caption: 'Special edition stamp',
-        price: '$275',
+        price: '₹275',
       },
       {
         id: 8,
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQumnJtByR9x33UZfLKTnH_okbT5s1gVuzQqQ&s',
         caption: 'Unique stamp from 1920s',
-        price: '$300',
+        price: '₹300',
       },
     ]
     
@@ -70,7 +70,7 @@ const Profile = () => {
     <div className="min-h-screen bg-gray-100 p-6">
       {/* User Details and Collection Information */}
       <motion.div
-        className="bg-white p-6 rounded-lg border-2 border-black mb-8 shadow-md"
+        className="p-6 mb-8"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -100,7 +100,7 @@ const Profile = () => {
                 <FaEdit className="mr-1" /> Edit Collection
               </Link>
             </div>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 w-1/2 mx-auto">
               <div className="text-center flex-1">
                 <h3 className="text-xl font-semibold text-gray-800">{user.collectionInfo.totalStamps}</h3>
                 <p className="text-gray-600">Total Stamps</p>

@@ -12,10 +12,10 @@ const Sidebar = () => {
 
   return (
     <div
-      className="fixed top-[5rem] left-2 w-80  shadow-lg rounded-lg p-6 border-2 border-gray-700 bg-white z-50 overflow-y-scroll"
+      className="fixed top-[5rem] left-2 w-80 bg-white shadow-lg rounded-lg p-6 border-2 border-gray-700 z-50 overflow-y-auto"
       style={{ height: 'calc(100vh - 5.5rem)' }}
     >
-      <h2 className="text-xl font-semibold mb-6 ">Channels</h2>
+      <h2 className="text-2xl font-bold text-gray-900 mb-6">Channels</h2>
       <ul>
         {channels.map((channel) => (
           <motion.li
@@ -27,7 +27,7 @@ const Sidebar = () => {
           >
             <Link
               to={`/channel/${channel.id}`}
-              className="block w-full bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition duration-200 ease-in-out shadow-md transform hover:scale-105"
+              className="block w-full bg-gray-800 text-white px-4 py-3 rounded-lg hover:bg-gray-700 transition duration-200 ease-in-out shadow-md transform hover:scale-105"
               aria-label={`Go to ${channel.name}`}
             >
               {channel.name}
