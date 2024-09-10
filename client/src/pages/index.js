@@ -6,6 +6,7 @@ import Channel from "./Channel";
 import Order from "./Order";
 import BuyItems from "./BuyItems";
 import Events from "./Events";
+import BiddingEvent from "./BiddingEvent";
 
 export {
     Home,
@@ -15,5 +16,6 @@ export {
     Channel,
     Order,
     BuyItems,
-    Events
+    Events,
+    BiddingEvent
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Filter from '../components/Events/Filter';
+import { useNavigate } from 'react-router-dom';
 
 // Sample data for events
 const events = [
@@ -86,6 +87,8 @@ const Events = () => {
     priceRange: [0, 1000]
   });
 
+  const navigate = useNavigate()
+
   const applyFilters = (newFilters) => {
     setFilters(newFilters);
   };
@@ -136,6 +139,7 @@ const Events = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="bg-black text-white py-2 px-4 rounded-md mt-auto transition-colors duration-300 hover:bg-gray-800"
+                    onClick={()=>navigate(`/event/${event.id}`)}
                   >
                     Join Event
                   </motion.button>
