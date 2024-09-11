@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaEdit } from 'react-icons/fa'; // Importing edit icon
+import { FaEdit } from 'react-icons/fa'; 
 import { motion } from 'framer-motion';
 import { useUser } from '../provider/UserProvider';
 
@@ -77,7 +77,7 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
-      {/* userProfile Details and Collection Information */}
+
       <motion.div
         className="p-6 mb-8"
         initial={{ opacity: 0, y: 20 }}
@@ -85,7 +85,7 @@ const Profile = () => {
         transition={{ duration: 0.5 }}
       >
         <div className="flex flex-wrap md:flex-nowrap items-center">
-          {/* userProfile Details */}
+
           <div className="flex items-center mb-6 md:mb-0">
             <img
               src={userProfile.profilePicture}
@@ -101,7 +101,6 @@ const Profile = () => {
             </div>
           </div>
 
-          {/* Collection Information */}
           <div className="flex-1 md:ml-8">
             <div className="flex relative justify-center items-center mb-4">
               <h2 className="text-2xl font-bold text-gray-900">My Collection</h2>
@@ -127,7 +126,6 @@ const Profile = () => {
         </div>
       </motion.div>
 
-      {/* Collection Feed */}
       <motion.div
         className="bg-white p-6 rounded-lg shadow-lg border-2 border-black"
         initial={{ opacity: 0, y: 20 }}

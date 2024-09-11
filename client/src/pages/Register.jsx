@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { BasicInfo, PhilatelistInfo, AdditionalInfo, ContactPreferences } from '../components/Register';
-import { motion } from 'framer-motion'; // Import Framer Motion for animations
+import { motion } from 'framer-motion'; 
 
-// Define the tabs
+
 const tabs = [
   { id: 'basic-info', label: 'Basic Info' },
   { id: 'philatelist-info', label: 'Philatelist Info' },
@@ -45,7 +45,7 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add form submission logic here
+
     console.log('Form submitted:', userData);
   };
 
@@ -80,7 +80,6 @@ const Register = () => {
       >
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Register</h2>
 
-        {/* Tab Navigation */}
         <motion.div
           className="relative"
           initial={{ opacity: 0, y: -20 }}
@@ -100,7 +99,7 @@ const Register = () => {
           </div>
         </motion.div>
 
-        {/* Tab Content */}
+
         <form onSubmit={handleSubmit}>
           <motion.div
             className="mt-4 min-h-[400px]"
@@ -114,7 +113,6 @@ const Register = () => {
             {activeTab === 'contact-preferences' && <ContactPreferences userData={userData} handleChange={handleChange} />}
           </motion.div>
 
-          {/* Action Buttons */}
           <motion.div
             className="flex justify-end space-x-4 mt-6"
             initial={{ opacity: 0, y: 20 }}

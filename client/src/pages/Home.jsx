@@ -1,14 +1,14 @@
 import React from 'react';
 import Feed from '../components/Home/Feed';
 import Sidebar from '../components/Home/Sidebar';
-import UpcomingEvents from '../components/Home/UpcomingEvents'; // Import the new component
+import UpcomingEvents from '../components/Home/UpcomingEvents'; 
 
 const Home = () => {
   return (
     <div className="bg-gray-100 min-h-screen flex p-4">
       <Sidebar />
       <div className="flex-1 ml-[20rem] flex flex-col lg:flex-row lg:space-x-6">
-        {/* Increase the size of the Feed component */}
+
         <div className="flex-1 lg:w-2/3">
           <Feed />
         </div>

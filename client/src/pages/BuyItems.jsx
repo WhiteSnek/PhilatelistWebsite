@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import Filter from '../components/Events/Filter'; // Ensure the filter component is available
+import Filter from '../components/Events/Filter'; 
 import { useNavigate } from 'react-router-dom';
 
 const categories = ["Rare", "Vintage", "Commemorative", "Limited Edition"];
@@ -100,7 +100,7 @@ const BuyItems = () => {
 
   return (
     <div className="flex">
-      {/* Sidebar filter */}
+
       <Filter onFilterChange={applyFilters} categories={categories} types={types} />
       <div className="p-4 flex-1 ml-[21rem]">
         <h1 className="text-3xl font-bold mb-6 text-gray-900 text-center">Buy Philatelic Items</h1>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot with WebSocket</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        #chatbox { width: 300px; height: 400px; border: 1px solid #ccc; padding: 10px; overflow-y: auto; }
+        #message { width: 200px; }
+        #send { width: 80px; }
+    </style>
+</head>
+<body>
+
+<h1>Chatbot</h1>
+<div id="chatbox"></div>
+<input type="text" id="message" placeholder="Ask something...">
+<button id="send">Send</button>
+
+<script>
+    const socket = new WebSocket('ws://localhost:8765');
+
+    socket.onopen = function () {
+        console.log('WebSocket connection established');
+    };
+
+    socket.onmessage = function (event) {
+        const chatbox = document.getElementById('chatbox');
+        const response = event.data;
+        chatbox.innerHTML += `<p><b>Bot:</b> ${response}</p>`;
+        chatbox.scrollTop = chatbox.scrollHeight; // Scroll to the bottom of the chatbox
+    };
+
+    socket.onerror = function (error) {
+        console.error('WebSocket error:', error);
+    };
+
+    document.getElementById('send').addEventListener('click', function () {
+        const message = document.getElementById('message').value;
+        if (message.trim() !== '') {
+            socket.send(message);
+            const chatbox = document.getElementById('chatbox');
+            chatbox.innerHTML += `<p><b>You:</b> ${message}</p>`;
+            chatbox.scrollTop = chatbox.scrollHeight; // Scroll to the bottom of the chatbox
+            document.getElementById('message').value = '';
+        }
+    });
+
+    // Optionally handle WebSocket close event
+    socket.onclose = function () {
+        console.log('WebSocket connection closed');
+    };
+</script>
+
+</body>
+</html>

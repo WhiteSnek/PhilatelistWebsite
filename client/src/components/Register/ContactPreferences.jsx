@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion'; // Import Framer Motion for animations
+import { motion } from 'framer-motion'; 
 
 const ContactPreferences = ({ userData, handleChange }) => {
   return (

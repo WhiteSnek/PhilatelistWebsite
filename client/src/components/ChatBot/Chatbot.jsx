@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   IconButton,
   Paper,
@@ -14,22 +14,63 @@ const Chatbot = () => {
     { id: 1, text: "Hello! How can I help you today?", sender: "chatbot" },
   ]);
   const [input, setInput] = useState("");
+  const socketRef = useRef(null);
+  const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    // Initialize WebSocket connection
+    const socket = new WebSocket('ws://localhost:8765');
+    socketRef.current = socket;
+
+    socket.onopen = () => {
+      console.log('WebSocket connection established');
+    };
+
+    socket.onmessage = (event) => {
+      console.log('Message received:', event.data); // Debug log
+      const response = event.data;
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { id: prevMessages.length + 1, text: response, sender: "chatbot" },
+      ]);
+      scrollToBottom();
+    };
+
+    socket.onerror = (error) => {
+      console.error('WebSocket error:', error);
+    };
+
+    socket.onclose = () => {
+      console.log('WebSocket connection closed');
+    };
+
+    return () => {
+      if (socketRef.current) {
+        socketRef.current.close();
+      }
+    };
+  }, []);
 
   const handleToggle = () => setIsOpen(!isOpen);
 
   const handleSend = () => {
     if (input.trim()) {
-      setMessages([
-        ...messages,
-        { id: messages.length + 1, text: input, sender: "user" },
-        {
-          id: messages.length + 2,
-          text: "Thank you for your message!",
-          sender: "chatbot",
-        },
-      ]);
-      setInput("");
+      if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN) {
+        socketRef.current.send(input);
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { id: prevMessages.length + 1, text: input, sender: "user" },
+        ]);
+        setInput("");
+        scrollToBottom();
+      } else {
+        console.error('WebSocket is not connected');
+      }
     }
+  };
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -87,6 +128,7 @@ const Chatbot = () => {
                 />
               </ListItem>
             ))}
+            <div ref={messagesEndRef} />
           </List>
 
           {/* Input Field */}
