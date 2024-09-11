@@ -3,71 +3,83 @@ import { motion } from 'framer-motion';
 import Filter from '../components/Events/Filter'; // Ensure the filter component is available
 import { useNavigate } from 'react-router-dom';
 
-// Sample data for products
+const categories = ["Rare", "Vintage", "Commemorative", "Limited Edition"];
+const types = ["Postal", "Revenue", "Air Mail", "Provisional"];
+
 const products = [
   {
     id: 1,
     image: 'https://5.imimg.com/data5/SELLER/Default/2021/5/KA/YK/XE/128841748/old-postage-stamps.jpg',
     description: 'Rare stamp from 1970s collection',
     price: '₹150',
-    category: 'Stamp',
+    category: 'Rare',
+    type: 'Postal'
   },
   {
     id: 2,
     image: 'https://assets.architecturaldigest.in/photos/6008354b3a9d9570bc841a61/master/w_1600%2Cc_limit/char_D4B4397.jpg',
     description: 'Vintage commemorative stamp',
     price: '₹200',
-    category: 'Stamp',
+    category: 'Commemorative',
+    type: 'Air Mail'
   },
   {
     id: 3,
     image: 'https://media.dharaastamps.co.in/wp-content/uploads/2022/05/MINT0002.jpg',
     description: 'Rare 1847 5c Brown stamp',
     price: '₹500',
-    category: 'Stamp',
+    category: 'Rare',
+    type: 'Revenue'
   },
   {
     id: 4,
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH5VlvN_msBC0_LJNGRJF344rQOBhzkvhOxw&s',
     description: 'Unique 19th-century stamp',
     price: '₹350',
-    category: 'Stamp',
+    category: 'Vintage',
+    type: 'Provisional'
   },
   {
     id: 5,
     image: 'https://pic.ebid.net/upload_big/7/9/3/1682558369-12333-0.jpg',
     description: 'Limited edition stamp from the 1800s',
     price: '₹250',
-    category: 'Stamp',
+    category: 'Limited Edition',
+    type: 'Postal'
   },
   {
     id: 6,
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTibtmMYZnqTmhhnhO70qxONtGEryUtqoJ1MA&s',
     description: 'Rare misprinted stamp',
     price: '₹450',
-    category: 'Stamp',
+    category: 'Rare',
+    type: 'Provisional'
   },
   {
     id: 7,
     image: 'https://assets.architecturaldigest.in/photos/6008354b3a9d9570bc841a61/master/w_1600%2Cc_limit/char_D4B4397.jpg',
     description: 'Historical stamp with printing error',
     price: '₹600',
-    category: 'Stamp',
+    category: 'Vintage',
+    type: 'Air Mail'
   },
   {
     id: 8,
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQumnJtByR9x33UZfLKTnH_okbT5s1gVuzQqQ&s',
     description: 'Rare stamp from early 20th century',
     price: '₹350',
-    category: 'Stamp',
+    category: 'Vintage',
+    type: 'Postal'
   },
 ];
+
 
 
 const BuyItems = () => {
   const [filters, setFilters] = useState({
     categories: [],
-    priceRange: [0, 1000]
+    priceRange: [0, 1000],
+    types: []
   });
 
   const navigate = useNavigate();
@@ -79,15 +91,17 @@ const BuyItems = () => {
   const filteredProducts = products.filter((product) => {
     return (
       (filters.categories.length === 0 || filters.categories.includes(product.category)) &&
+      (filters.types.length === 0 || filters.types.includes(product.type)) &&
       parseFloat(product.price.replace('₹', '')) >= filters.priceRange[0] &&
       parseFloat(product.price.replace('₹', '')) <= filters.priceRange[1]
     );
   });
+  
 
   return (
     <div className="flex">
       {/* Sidebar filter */}
-      <Filter onFilterChange={applyFilters} />
+      <Filter onFilterChange={applyFilters} categories={categories} types={types} />
       <div className="p-4 flex-1 ml-[21rem]">
         <h1 className="text-3xl font-bold mb-6 text-gray-900 text-center">Buy Philatelic Items</h1>
         {filteredProducts.length > 0 ? (

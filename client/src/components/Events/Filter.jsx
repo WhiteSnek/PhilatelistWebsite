@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { Slider, Button, Typography } from '@mui/material';
 
 // Sample data for categories and types of stamps
-const categories = ["Rare", "Vintage", "Commemorative", "Limited Edition"];
-const stampTypes = ["Postal", "Revenue", "Air Mail", "Provisional"];
 
-const Filter = ({ onFilterChange }) => {
+
+const Filter = ({ onFilterChange, categories, types }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [priceRange, setPriceRange] = useState([0, 1000]);
@@ -23,11 +22,11 @@ const Filter = ({ onFilterChange }) => {
     );
   };
 
-  const handleTypeChange = (stampType) => {
+  const handleTypeChange = (type) => {
     setLocalTypes((prev) =>
-      prev.includes(stampType)
-        ? prev.filter((item) => item !== stampType)
-        : [...prev, stampType]
+      prev.includes(type)
+        ? prev.filter((item) => item !== type)
+        : [...prev, type]
     );
   };
 
@@ -86,16 +85,16 @@ const Filter = ({ onFilterChange }) => {
         <h2 className='text-lg mb-2'>
           Types of Stamps
         </h2>
-        {stampTypes.map((stampType) => (
-          <div key={stampType} className="mb-2">
+        {types.map((type) => (
+          <div key={type} className="mb-2">
             <label className="inline-flex items-center">
               <input
                 type="checkbox"
-                checked={localTypes.includes(stampType)}
-                onChange={() => handleTypeChange(stampType)}
+                checked={localTypes.includes(type)}
+                onChange={() => handleTypeChange(type)}
                 className="form-checkbox h-5 w-5 text-black accent-black"
               />
-              <span className="ml-2">{stampType}</span>
+              <span className="ml-2">{type}</span>
             </label>
           </div>
         ))}

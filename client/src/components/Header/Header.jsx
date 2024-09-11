@@ -3,8 +3,11 @@ import { FaSearch } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 import { motion } from 'framer-motion';
+import { useUser } from "../../provider/UserProvider";
 
 const Header = () => {
+  const { user } = useUser();
+
   return (
     <header className="bg-white shadow-md p-4 sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center">
@@ -23,7 +26,7 @@ const Header = () => {
         <ul className="nav-list hidden md:flex space-x-8 relative ">
           <motion.li whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
             <NavLink
-              to="/"
+              to="/feed"
               exact
               className={({ isActive }) =>
                 isActive
@@ -72,7 +75,7 @@ const Header = () => {
           </motion.li>
         </ul>
 
-        {/* Search Bar & Profile */}
+        {/* Search Bar & Profile/Login */}
         <div className="flex items-center space-x-4">
           {/* Search Bar */}
           <motion.div
@@ -88,17 +91,30 @@ const Header = () => {
             <FaSearch className="absolute right-3 top-3 text-gray-400" />
           </motion.div>
 
-          {/* Login Button */}
-          <NavLink to="/login">
-            <motion.button
-              className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800"
-              whileHover={{ scale: 1.05, boxShadow: "0px 4px 15px rgba(0,0,0,0.3)" }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.3 }}
-            >
-              Login
-            </motion.button>
-          </NavLink>
+          {/* Conditional Profile Icon or Login Button */}
+          {user ? (
+            <NavLink to="/profile">
+              <motion.img
+                src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8AJM9wkP__z2M-hovSAWcTb_9XJ6smy3NKw&s' // Assuming user object contains `avatar`
+                alt="Profile"
+                className="h-10 w-10 rounded-full object-cover"
+                whileHover={{ scale: 1.05, boxShadow: "0px 4px 15px rgba(0,0,0,0.3)" }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.3 }}
+              />
+            </NavLink>
+          ) : (
+            <NavLink to="/login">
+              <motion.button
+                className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800"
+                whileHover={{ scale: 1.05, boxShadow: "0px 4px 15px rgba(0,0,0,0.3)" }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.3 }}
+              >
+                Login
+              </motion.button>
+            </NavLink>
+          )}
         </div>
       </div>
     </header>

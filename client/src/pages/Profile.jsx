@@ -1,10 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaEdit } from 'react-icons/fa'; // Importing edit icon
 import { motion } from 'framer-motion';
+import { useUser } from '../provider/UserProvider';
 
 const Profile = () => {
-  const user = {
+  const userProfile = {
     name: 'John Doe',
     email: 'john.doe@example.com',
     profilePicture: 'https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg',
@@ -66,9 +67,17 @@ const Profile = () => {
     
   };
 
+  const {user} = useUser()
+  const navigate = useNavigate()
+  useEffect(()=>{
+    if(!user){
+      navigate('/login')
+    }
+  },[])
+
   return (
     <div className="min-h-screen bg-gray-100 p-6">
-      {/* User Details and Collection Information */}
+      {/* userProfile Details and Collection Information */}
       <motion.div
         className="p-6 mb-8"
         initial={{ opacity: 0, y: 20 }}
@@ -76,19 +85,19 @@ const Profile = () => {
         transition={{ duration: 0.5 }}
       >
         <div className="flex flex-wrap md:flex-nowrap items-center">
-          {/* User Details */}
+          {/* userProfile Details */}
           <div className="flex items-center mb-6 md:mb-0">
             <img
-              src={user.profilePicture}
+              src={userProfile.profilePicture}
               alt="Profile"
               className="w-24 h-24 rounded-full object-cover border-4 border-black shadow-lg "
             />
             <div className="ml-4">
-              <h1 className="text-3xl font-bold text-gray-900">{user.name}</h1>
-              <p className="text-gray-600">{user.email}</p>
-              <Link to="/edit-profile" className="font-bold hover:underline mt-2 inline-flex items-center">
+              <h1 className="text-3xl font-bold text-gray-900">{userProfile.name}</h1>
+              <p className="text-gray-600">{userProfile.email}</p>
+              <div className="font-bold hover:underline mt-2 inline-flex items-center cursor-pointer">
                 <FaEdit className="mr-1" /> Edit Profile
-              </Link>
+              </div>
             </div>
           </div>
 
@@ -96,21 +105,21 @@ const Profile = () => {
           <div className="flex-1 md:ml-8">
             <div className="flex relative justify-center items-center mb-4">
               <h2 className="text-2xl font-bold text-gray-900">My Collection</h2>
-              <Link to="/edit-collection" className="absolute top-0 right-0 font-bold hover:underline inline-flex items-center">
+              <div className="absolute top-0 cursor-pointer right-0 font-bold hover:underline inline-flex items-center">
                 <FaEdit className="mr-1" /> Edit Collection
-              </Link>
+              </div>
             </div>
             <div className="flex space-x-4 w-1/2 mx-auto">
               <div className="text-center flex-1">
-                <h3 className="text-xl font-semibold text-gray-800">{user.collectionInfo.totalStamps}</h3>
+                <h3 className="text-xl font-semibold text-gray-800">{userProfile.collectionInfo.totalStamps}</h3>
                 <p className="text-gray-600">Total Stamps</p>
               </div>
               <div className="text-center flex-1">
-                <h3 className="text-xl font-semibold text-gray-800">{user.collectionInfo.rareStamps}</h3>
+                <h3 className="text-xl font-semibold text-gray-800">{userProfile.collectionInfo.rareStamps}</h3>
                 <p className="text-gray-600">Rare Stamps</p>
               </div>
               <div className="text-center flex-1">
-                <h3 className="text-xl font-semibold text-gray-800">{user.collectionInfo.totalValue}</h3>
+                <h3 className="text-xl font-semibold text-gray-800">{userProfile.collectionInfo.totalValue}</h3>
                 <p className="text-gray-600">Total Value</p>
               </div>
             </div>
@@ -127,7 +136,7 @@ const Profile = () => {
       >
         <h2 className="text-2xl font-bold mb-4">Collection Feed</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {user.posts.map(post => (
+          {userProfile.posts.map(post => (
             <motion.div
               key={post.id}
               className="border rounded-lg overflow-hidden bg-gray-50"

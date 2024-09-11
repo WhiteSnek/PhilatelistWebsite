@@ -10,7 +10,8 @@ import LandingPage from './components/MainLandingPage/MainLandingPage.jsx';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
-      <Route path='' element={<Home />} />
+      <Route path='' element={< LandingPage />} />
+      <Route path='feed' element={<Home />} />
       <Route path='login' element={<Login />} />
       <Route path='register' element={<Register />} />
       <Route path='profile' element={<Profile />} />
@@ -19,7 +20,7 @@ const router = createBrowserRouter(
       <Route path='buy' element={<BuyItems />} />
       <Route path='events' element={<Events />} />
       <Route path='event/:id' element={<BiddingEvent />} />
-      <Route path='landing-page' element={< LandingPage />} />
+      
     </Route>
   )
 );

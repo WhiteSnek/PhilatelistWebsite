@@ -1,14 +1,36 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import Logo from '../assets/logo.png'; // Add your logo image path here
 import { motion } from 'framer-motion'; // Framer Motion for animation
+import { useUser } from '../provider/UserProvider';
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const { setUser } = useUser();
+  const navigate = useNavigate();
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword(prevState => !prevState);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Replace this with your actual API call to login
+    const loginUser = async (email, password) => {
+        return { id: 1, name: 'John Doe', email };
+    };
+
+    try {
+      const userData = await loginUser(email, password);
+      setUser(userData); // Set the user in context
+      navigate('/feed'); // Redirect to the dashboard or another page
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (
@@ -32,13 +54,15 @@ const Login = () => {
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Login</h2>
 
         {/* Login Form */}
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
             <input
               type="email"
               id="email"
               name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
               className="w-full px-4 py-2 border border-gray-300 bg-gray-100 text-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
             />
@@ -50,6 +74,8 @@ const Login = () => {
               type={showPassword ? 'text' : 'password'}
               id="password"
               name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               required
               className="w-full px-4 py-2 border border-gray-300 bg-gray-100 text-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
             />
