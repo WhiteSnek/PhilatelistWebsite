@@ -117,7 +117,7 @@ const LandingPage = () => {
             <motion.button
               className="text-white bg-red-500 px-8 py-4 text-xl rounded-sm"
               initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
+              animate={{ y: 200, opacity: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
               whileHover={{ scale: 1.1, backgroundColor: "#dc2626" }}
               whileTap={{ scale: 0.95 }}
