@@ -16,9 +16,9 @@ const Channel = () => {
   };
 
   const handleSendMessage = (e) => {
-    e.preventDefault(); // Prevent form from refreshing the page
+    e.preventDefault(); 
 
-    if (newMessage.trim() === "") return; // Don't send empty messages
+    if (newMessage.trim() === "") return; 
 
     setMessages([
       ...messages,
@@ -37,12 +37,12 @@ const Channel = () => {
     <div className="flex bg-gray-100 p-2.5">
       <Sidebar />
       <div className="flex-1 flex flex-col gap-2 mx-auto max-w-4xl px-4 ">
-        {/* Chat Area */}
+
         <div
           className="bg-white rounded-lg shadow-md overflow-auto p-4 border-black border-2"
           style={{ height: "calc(100vh - 11.5rem)" }}
         >
-          {/* Chat Messages */}
+
           {messages.map((message) => (
             <div key={message.id} className="mb-4 p-2 border-b border-gray-200">
               <div className="font-semibold text-gray-800">{message.user}</div>
@@ -50,7 +50,7 @@ const Channel = () => {
             </div>
           ))}
         </div>
-        {/* Message Input */}
+
         <form onSubmit={handleSendMessage} className="bg-white border-black border-2 p-4 flex items-center rounded-md">
           <input
             type="text"
@@ -64,9 +64,9 @@ const Channel = () => {
             className="bg-black text-white px-4 py-2 rounded-r-lg hover:bg-gray-800"
           >
             <motion.div
-              whileHover={{ x: 5 }}  // Translate the icon 5px to the right on hover
-              whileTap={{ x: 2 }}    // Slightly translate the icon 2px to the right when clicked
-              transition={{ type: 'spring', stiffness: 300, damping: 20 }}  // Smooth transition effect
+              whileHover={{ x: 5 }}  
+              whileTap={{ x: 2 }}    
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }} 
             >
               <SendIcon />
             </motion.div>
@@ -74,7 +74,7 @@ const Channel = () => {
         </form>
       </div>
 
-      {/* Members List */}
+
       <MembersList members={members} />
     </div>
   );

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { styled } from '@mui/material/styles';
-import { CheckCircle, Error, Info, Warning } from '@mui/icons-material'; // Import icons if needed
 
 const CustomAlert = styled(Alert)(({ theme }) => ({
   '&.MuiAlert-root': {
@@ -10,7 +9,7 @@ const CustomAlert = styled(Alert)(({ theme }) => ({
     color: 'white',
   },
   '& .MuiAlert-icon': {
-    color: 'white', // Ensure the icon color is white
+    color: 'white', 
   },
 }));
 

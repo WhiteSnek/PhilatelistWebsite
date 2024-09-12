@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ExpandMore, ExpandLess } from '@mui/icons-material'; 
 
-// Sample data for posts, replace this with dynamic data from your backend
 const posts = [
   {
     id: 1,
@@ -98,7 +97,7 @@ const Feed = () => {
 };
 
 const PostCard = ({ post }) => {
-  const [showBackstory, setShowBackstory] = useState(true); // Initially show overlay
+  const [showBackstory, setShowBackstory] = useState(true);
 
   return (
     <motion.div
@@ -108,7 +107,7 @@ const PostCard = ({ post }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
     >
-      {/* User Info */}
+
       <div className="flex items-center mb-4">
         <img
           src={post.userAvatar}
@@ -121,10 +120,8 @@ const PostCard = ({ post }) => {
         </div>
       </div>
 
-      {/* Post Content */}
       <div >
         <div className="relative"> 
-        {/* Image */}
         <motion.img
           src={post.postImage}
           alt="Philatelic Item"
@@ -133,7 +130,6 @@ const PostCard = ({ post }) => {
           transition={{ duration: 0.3 }}
         />
 
-        {/* Backstory Overlay */}
         {showBackstory && (
           <motion.div
             className="absolute inset-0 bg-gradient-to-t from-black  to-transparent text-white p-4 flex flex-col justify-end rounded-lg"
@@ -159,11 +155,10 @@ const PostCard = ({ post }) => {
           </button>
         )}
         </div>
-        {/* Caption and Price */}
+
         <p className="text-gray-800 text-sm mb-2">{post.caption}</p>
         <p className="text-lg font-semibold mb-4">{post.price}</p>
 
-        {/* Buy Button */}
         <Link to={`/order/${post.id}`}>
           <motion.button
             className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition"

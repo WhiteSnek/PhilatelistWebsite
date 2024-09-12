@@ -11,14 +11,13 @@ const AdditionalInfo = ({ userData, handleChange }) => {
     const file = e.target.files[0];
     if (file) {
       setProfilePic(URL.createObjectURL(file));
-      // Optionally handle file upload here
-      handleChange(e); // This will handle any form state changes if needed
+      handleChange(e);
     }
   };
 
   const handleRemovePicture = () => {
     setProfilePic(null);
-    // Optionally reset file input value
+
     document.getElementById('profilePictureInput').value = null;
   };
 

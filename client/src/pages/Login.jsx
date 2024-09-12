@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import Logo from '../assets/logo.png'; // Add your logo image path here
-import { motion } from 'framer-motion'; // Framer Motion for animation
+import Logo from '../assets/logo.png'; 
+import { motion } from 'framer-motion'; 
 import { useUser } from '../provider/UserProvider';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const { setUser } = useUser();
+  const { setUser, login } = useUser();
   const navigate = useNavigate();
-
   const handleTogglePasswordVisibility = () => {
     setShowPassword(prevState => !prevState);
   };
@@ -19,15 +18,19 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Replace this with your actual API call to login
+
     const loginUser = async (email, password) => {
+      const details = {email, password}
+      const success = await login(details)
+      if(success)
         return { id: 1, name: 'John Doe', email };
+      else console.log('Error!!!!')
     };
 
     try {
       const userData = await loginUser(email, password);
-      setUser(userData); // Set the user in context
-      navigate('/feed'); // Redirect to the dashboard or another page
+      setUser(userData); 
+      navigate('/feed');
     } catch (error) {
       alert(error.message);
     }
@@ -41,7 +44,7 @@ const Login = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, ease: 'easeInOut' }}
       >
-        {/* Animated Logo */}
+
         <motion.div
           className="flex justify-center mb-6"
           initial={{ scale: 0 }}
@@ -53,7 +56,6 @@ const Login = () => {
 
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Login</h2>
 
-        {/* Login Form */}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
@@ -100,7 +102,6 @@ const Login = () => {
           </button>
         </form>
 
-        {/* Additional Links */}
         <div className="flex justify-between items-center mt-4 text-sm">
           <Link to="/forgot-password" className="text-gray-500 hover:text-black transition">Forgot Password?</Link>
           <Link to="/register" className="text-gray-500 hover:text-black transition">Create an Account</Link>

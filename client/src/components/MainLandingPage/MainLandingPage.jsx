@@ -90,7 +90,7 @@ const LandingPage = () => {
       >
         <img
           className="h-screen md:h-96 w-full object-cover "
-          src='https://images-cdn.ubuy.co.in/633ed4b443018c653013e615-1000-used-worldwide-postage-stamps.jpg'
+          src="https://images-cdn.ubuy.co.in/633ed4b443018c653013e615-1000-used-worldwide-postage-stamps.jpg"
           alt="landing-page"
         />
         <div className="absolute inset-0  bg-black opacity-70 px-10 lg:px-16 " />
@@ -174,47 +174,49 @@ const LandingPage = () => {
           transition={{ delay: 0.5, duration: 1.5 }}
         >
           {products.map((item, index) => (
-            <motion.div
-              key={index}
-              className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 200 }}
-            >
-              <a href="#">
-                <img
-                  className="p-8 rounded-t-lg h-60 w-96"
-                  src={item.image}
-                  alt="product image"
-                />
-              </a>
-              <div className="px-5 pb-5">
-                <a href="#">
-                  <h5 className="text-xl font-semibold tracking-tight text-gray-900">
-                    {item.description}
-                  </h5>
-                </a>
-                <div className="flex items-center mt-2.5 mb-5">
-                  <div className="flex items-center space-x-1 rtl:space-x-reverse">
-                    {/* Add rating icons */}
-                  </div>
-                  <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded ms-3">
-                    5.0
-                  </span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <p className="text-3xl font-bold text-gray-900">
-                    {item.price}
-                  </p>
-                  <a
-                    href="#"
-                    className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5"
-                  >
-                    Know more
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+  <motion.div
+    key={index}
+    className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg transition-transform transform hover:scale-105"
+    whileHover={{ scale: 1.05 }}
+    
+  >
+    <a href="#">
+      <img
+        className="p-4 rounded-t-lg h-60 w-full object-cover"
+        src={item.image}
+        alt="product image"
+      />
+    </a>
+    <div className="px-6 py-4">
+      <a href="#">
+        <h5 className="text-2xl font-semibold tracking-tight text-gray-900 mb-2 truncate">
+          {item.description}
+        </h5>
+      </a>
+      <div className="flex items-center mt-3 mb-4">
+        <div className="flex items-center space-x-1 rtl:space-x-reverse">
+          {/* Add rating icons */}
+          <span className="text-yellow-400">★★★★★</span>
+        </div>
+        <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded ml-3">
+          5.0
+        </span>
+      </div>
+      <div className="flex items-center justify-between">
+        <p className="text-2xl font-bold text-gray-900">
+          {item.price}
+        </p>
+        <a
+          href="#"
+          className="text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-4 py-2 transition-colors"
+        >
+          Learn More
+        </a>
+      </div>
+    </div>
+  </motion.div>
+))}
+
         </motion.div>
       </section>
 

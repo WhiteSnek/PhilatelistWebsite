@@ -16,7 +16,6 @@ const BiddingEvent = () => {
   const handleBid = () => {
     const bid = Number(bidAmount);
     
-    // Validate bid amount is a number and greater than 0
     if (isNaN(bid) || bid <= 0) {
       alert("Please enter a valid bid amount");
       return;
@@ -27,16 +26,16 @@ const BiddingEvent = () => {
       { name: 'You', bid: bid }
     ];
   
-    // Sort the leaderboard by bid amount in descending order
+
     const sortedLeaderboard = updatedLeaderboard.sort((a, b) => b.bid - a.bid);
   
-    // Set user's bid separately
+
     setUserBid({ name: 'You', bid: bid });
   
-    // Update the leaderboard excluding the user's bid for ranking purposes
+
     setLeaderboard(sortedLeaderboard.filter(bidder => bidder.name !== 'You'));
   
-    // Clear the input field
+
     setBidAmount('');
   };
   
@@ -60,7 +59,7 @@ const BiddingEvent = () => {
         animate={{ scale: 1 }}
         transition={{ duration: 0.5 }}
       >
-        {/* Header Section */}
+
         <motion.h1
           className="text-3xl font-bold text-center mb-8"
           initial={{ y: -50 }}
@@ -71,7 +70,7 @@ const BiddingEvent = () => {
         </motion.h1>
 
         <div className="flex flex-col md:flex-row justify-between">
-          {/* Stamp Image */}
+
           <motion.div
             className="w-full md:w-1/3"
             whileHover={{ scale: 1.05 }}
@@ -84,7 +83,7 @@ const BiddingEvent = () => {
             />
           </motion.div>
 
-          {/* Stamp Info */}
+
           <motion.div className="w-full md:w-2/3 md:pl-6">
             <motion.h2
               className="text-2xl font-bold mb-4"
@@ -100,7 +99,7 @@ const BiddingEvent = () => {
               <p><strong>Type:</strong> Limited Edition</p>
             </div>
 
-            {/* Backstory */}
+
             <div className="mb-4">
               <h3 className="text-xl font-bold mb-2">Backstory</h3>
               <p className="text-gray-700">
@@ -108,14 +107,14 @@ const BiddingEvent = () => {
               </p>
             </div>
 
-            {/* Starting Price */}
+
             <div className="mb-4">
               <p><strong>Starting Price:</strong> ₹300</p>
             </div>
           </motion.div>
         </div>
 
-        {/* Leaderboard */}
+
         <motion.div className="mt-8">
           <motion.h2
             className="text-2xl font-bold mb-4"
@@ -170,7 +169,6 @@ const BiddingEvent = () => {
           </motion.table>
         </motion.div>
 
-        {/* Bid Section */}
         <motion.div className="mt-8">
           <motion.h2
             className="text-2xl font-bold mb-4"

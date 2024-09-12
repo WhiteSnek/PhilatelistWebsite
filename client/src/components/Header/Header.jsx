@@ -11,7 +11,6 @@ const Header = () => {
   return (
     <header className="bg-white shadow-md p-4 sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center">
-        {/* Logo */}
         <motion.div
           className="text-2xl font-bold flex gap-2 items-center text-black"
           initial={{ opacity: 0, y: -20 }}
@@ -22,7 +21,6 @@ const Header = () => {
           Dak Connect
         </motion.div>
 
-        {/* Navigation */}
         <ul className="nav-list hidden md:flex space-x-8 relative ">
           <motion.li whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
             <NavLink
@@ -75,9 +73,7 @@ const Header = () => {
           </motion.li>
         </ul>
 
-        {/* Search Bar & Profile/Login */}
         <div className="flex items-center space-x-4">
-          {/* Search Bar */}
           <motion.div
             className="relative"
             whileHover={{ scale: 1.02 }}
@@ -91,7 +87,6 @@ const Header = () => {
             <FaSearch className="absolute right-3 top-3 text-gray-400" />
           </motion.div>
 
-          {/* Conditional Profile Icon or Login Button */}
           {user ? (
             <NavLink to="/profile">
               <motion.img

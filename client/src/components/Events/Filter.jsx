@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Slider, Button, Typography } from '@mui/material';
+import { Slider,Typography } from '@mui/material';
 
-// Sample data for categories and types of stamps
 
 
 const Filter = ({ onFilterChange, categories, types }) => {
@@ -9,7 +8,6 @@ const Filter = ({ onFilterChange, categories, types }) => {
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [priceRange, setPriceRange] = useState([0, 1000]);
 
-  // Local state to manage filters before applying
   const [localCategories, setLocalCategories] = useState(selectedCategories);
   const [localTypes, setLocalTypes] = useState(selectedTypes);
   const [localPriceRange, setLocalPriceRange] = useState(priceRange);
@@ -59,7 +57,6 @@ const Filter = ({ onFilterChange, categories, types }) => {
         Filters
       </h1>
 
-      {/* Categories */}
       <div className="mb-4">
         <h2 className='text-lg mb-2'>
           Categories
@@ -80,7 +77,6 @@ const Filter = ({ onFilterChange, categories, types }) => {
         ))}
       </div>
 
-      {/* Types of Stamps */}
       <div className="mb-4">
         <h2 className='text-lg mb-2'>
           Types of Stamps
@@ -100,7 +96,6 @@ const Filter = ({ onFilterChange, categories, types }) => {
         ))}
       </div>
 
-      {/* Price Range */}
       <Typography variant="subtitle1" gutterBottom>
         Price Range
       </Typography>
@@ -113,15 +108,15 @@ const Filter = ({ onFilterChange, categories, types }) => {
         step={10}
         aria-labelledby="price-range-slider"
         sx={{
-            color: 'black', // Change the slider color to black
+            color: 'black',
             '& .MuiSlider-thumb': {
-              border: '2px solid black', // Change thumb border color to black
+              border: '2px solid black', 
             },
             '& .MuiSlider-rail': {
-              backgroundColor: 'black', // Change rail color to black
+              backgroundColor: 'black',
             },
             '& .MuiSlider-track': {
-              backgroundColor: 'black', // Change track color to black
+              backgroundColor: 'black', 
             },
           }}
       />
@@ -130,7 +125,6 @@ const Filter = ({ onFilterChange, categories, types }) => {
         <span>₹{localPriceRange[1]}</span>
       </div>
 
-      {/* Buttons */}
       <div className="mt-4 flex gap-2" >
         <button onClick={applyFilters} className="bg-black text-white py-2 px-6 rounded-md hover:bg-gray-800 transition-all">
           Apply Filters
