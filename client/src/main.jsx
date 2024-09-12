@@ -7,6 +7,7 @@ import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } 
 import { Profile, Home, Login, Register, Channel,BuyItems,Order, Events, BiddingEvent } from './pages';
 import LandingPage from './components/MainLandingPage/MainLandingPage.jsx';
 import Resources from './pages/Resources.jsx';
+import FullArticle from './components/Resources/FullArticle.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
       <Route path='events' element={<Events />} />
       <Route path='event/:id' element={<BiddingEvent />} />
       <Route path='resources' element={<Resources />} />
+      <Route path='article/:id' element={<FullArticle />} />
       
     </Route>
   )

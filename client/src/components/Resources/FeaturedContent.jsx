@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import stamp1 from '../../assets/stamps/stamp1.jpg'
+import stamp2 from '../../assets/stamps/stamp2.jpg'
 
 const FeaturedContent = () => {
   const articles = [
-    { title: "Rare Indian Stamps from the 1900s", author: "John Doe", date: "Sep 1, 2024" },
-    { title: "Understanding Stamp Grading", author: "Jane Smith", date: "Aug 25, 2024" },
+    { title: "Rare Indian Stamps from the 1900s", author: "John Doe", date: "Sep 1, 2024" , image : stamp1},
+    { title: "Understanding Stamp Grading", author: "Jane Smith", date: "Aug 25, 2024" , image : stamp2 },
     { title: "A Guide to British Colonial Stamps", author: "David Lee", date: "Aug 30, 2024" },
   ];
 

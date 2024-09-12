@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import SearchBar from '../components/Resources/SearchBar';
 import FeaturedContent from '../components/Resources/FeaturedContent';
 import CommunityInsights from '../components/Resources/CommunityInsights';
+import ArticleList from '../components/Resources/ArticlesList';
 
 const Resources = () => {
   return (
@@ -22,8 +23,9 @@ const Resources = () => {
           Explore a community-driven repository of articles, historical data, and insights on rare stamps.
         </p>
         <SearchBar />
-        <FeaturedContent />
+        {/* <FeaturedContent /> */}
         <CommunityInsights />
+        <ArticleList/>
       </motion.section>
     </motion.div>
   );

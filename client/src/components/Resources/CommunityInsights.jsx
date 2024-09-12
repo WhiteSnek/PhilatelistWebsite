@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import stamp3 from '../../assets/stamps/stamp3.jpg'
+import stamp4 from '../../assets/stamps/stamp4.jpg'
 
 const CommunityInsights = () => {
   const insights = [
-    { title: "Community Contribution on Rare Finds", user: "Alice Brown", rating: 4.8 },
-    { title: "Stamp Grading: A Detailed Guide", user: "Bob Smith", rating: 4.5 },
+    { title: "Community Contribution on Rare Finds", user: "Alice Brown", rating: 4.8 ,image : stamp3},
+    { title: "Stamp Grading: A Detailed Guide", user: "Bob Smith", rating: 4.5 , image :stamp4 },
   ];
 
   return (
@@ -34,6 +36,7 @@ const CommunityInsights = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
+              <img src={insight.image} className="w-full h-60"/>
             <h3 className="text-xl font-semibold">{insight.title}</h3>
             <p className="text-gray-500">By {insight.user} • Rating: {insight.rating}/5</p>
             <p className="mt-4 text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
